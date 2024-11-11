@@ -11,7 +11,7 @@
         
         
         let timeline = [];
-        const irb = {
+        const general_instruction = {
             // Which plugin to use
             type: jsPsychHtmlButtonResponse,
             // What should be displayed on the screen
@@ -20,7 +20,7 @@
             choices: ['Continue']
         };
         // push to the timeline
-        timeline.push(irb)      
+        timeline.push(general_instruction)      
 
         const instructions1 = {
             type: jsPsychHtmlKeyboardResponse,
@@ -39,9 +39,6 @@
                     response_allowed_while_playing: true,
                     //trial_duration: 4000,
                     prompt: `<div class=\"option_container\"><div class=\"option\">BLACK<br><br><b>D</b></div><div class=\"option\">WHITE<br><br><b>K</b></div></div>`,
-                    on_finish: function(data) {
-                        evaluate_response(data);
-                    },
                     data: jsPsych.timelineVariable('data')
                 },
                 {
@@ -74,9 +71,6 @@
                     response_allowed_while_playing: true,
                     //trial_duration: 4000,
                     prompt: `<div class=\"option_container\"><div class=\"option\">HISPANIC<br><br><b>D</b></div><div class=\"option\">BLACK<br><br><b>K</b></div></div>`,
-                    on_finish: function(data) {
-                        evaluate_response(data);
-                    },
                     data: jsPsych.timelineVariable('data')
                 },
                 {
@@ -109,9 +103,6 @@
                     response_allowed_while_playing: true,
                     //trial_duration: 4000,
                     prompt: `<div class=\"option_container\"><div class=\"option\">WHITE<br><br><b>D</b></div><div class=\"option\">HISPANIC<br><br><b>K</b></div></div>`,
-                    on_finish: function(data) {
-                        evaluate_response(data);
-                    },
                     data: jsPsych.timelineVariable('data')
                 },
                 {
@@ -135,7 +126,7 @@
 
         instructionBlockPairs = jsPsych.randomization.shuffle(instructionBlockPairs);
 
-        //var timeline = [irb];
+        //var timeline = [general_instruction];
 
         instructionBlockPairs.forEach(function(pair) {
             timeline.push(pair[0]); // Add the instruction trial
